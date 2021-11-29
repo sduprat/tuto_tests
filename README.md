@@ -58,7 +58,8 @@ gcc src/test_file1.o src/file1.o -o test1 -L../../cmocka-1.1.5/install/lib64 -lc
 Are the test complete enought ?  
 Complete the tests with
 - testing arguments of the called functions
-- a more commplete criteria
+  - for that, good ex in https://blog.microjoe.org/2017/unit-tests-c-cmocka-coverage-cmake.html#id14 using `expect_string` and `check_expected`. See API documentation : https://api.cmocka.org/group__cmocka__param.html.
+- a more complete criteria
   - functional coverage
   - statement coverage
   - decision coverage
