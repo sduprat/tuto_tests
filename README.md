@@ -1,0 +1,68 @@
+# tuto_tests
+tuto and ex for unit test
+
+## Prerequisites
+
+### Having CMOCKA installed
+see install procédure on https://github.com/clibs/cmocka/blob/master/INSTALL.md  
+But also, you can adapt the folowing command, please, replace `<INSTALL_DIR>`  with the dir where you have installed cmocka.
+```shell
+wget https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz
+tar xf cmocka-1.1.5.tar.xz
+cd build/
+cd cmocka-1.1.5
+pwd
+cmake -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>/build -DCMAKE_BUILD_TYPE=Debug ..
+make
+make install
+```
+## Set up env 
+just need to update LD_LIBRARY_PATH:
+```shell
+export LD_LIBRARY_PATH=<INSTALL_DIR>/install/lib64
+```
+
+## Other links
+- CMOCKA main page : https://cmocka.org/
+- Tuto : https://lwn.net/Articles/558106/
+
+
+
+## Run the example
+```shell
+> make
+gcc -c -Iinc -I../../cmocka-1.1.5/install/include -L../../cmocka-1.1.5/install/lib64 -lcmocka src/test_file1.c -o src/test_file1.o
+gcc -c -Iinc -I../../cmocka-1.1.5/install/include -L../../cmocka-1.1.5/install/lib64 -lcmocka src/file1.c -o src/file1.o
+gcc src/test_file1.o src/file1.o -o test1 -L../../cmocka-1.1.5/install/lib64 -lcmocka
+./test1
+[==========] Running 3 test(s).
+[ RUN      ] test_f1__1
+[       OK ] test_f1__1
+[ RUN      ] test_f2__1
+[       OK ] test_f2__1
+[ RUN      ] test_f2__1
+[       OK ] test_f2__1
+[==========] 3 test(s) run.
+[  PASSED  ] 3 test(s).
+```
+
+## what is happening ?
+
+### testing f1
+`f1` function is tested by `test_f1__1()` test function very simply with `assert_int_equal` cmocka primitive.
+
+### testing f2
+`f2` function is tested by `test_f2__1()` and `test_f2__1()` tests functions and with a mock of `fa`.
+
+## to continue
+Are the test complete enought ?  
+Complete the tests with
+- testing arguments of the called functions
+- a more commplete criteria
+  - functional coverage
+  - statement coverage
+  - decision coverage
+  - MCDC coverage (just know that can exist)
+
+
+
