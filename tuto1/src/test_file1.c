@@ -56,7 +56,7 @@ void test_f2__2(void **state)
 const struct CMUnitTest do_something_tests[] = {
     cmocka_unit_test(test_f1__1),
     cmocka_unit_test(test_f2__1),
-    cmocka_unit_test(test_f2__1),
+    cmocka_unit_test(test_f2__2),
 };
 
 
