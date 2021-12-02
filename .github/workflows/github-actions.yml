@@ -12,15 +12,18 @@ jobs:
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: install cmocka
-        run: wget https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz
-      - run: tar xf cmocka-1.1.5.tar.xz
-      - run: cd cmocka-1.1.5
-      - run: mkdir build
-      - run: mkdir install
-      - run: cd ./build
-      - run: cmake -DCMAKE_INSTALL_PREFIX=$PWD/../install -DCMAKE_BUILD_TYPE=Debug ..
-      - run: make
-      - run: make install
-      - run: cd ../../tuto1
-      - run: make
+        run: |
+          wget https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz
+          tar xf cmocka-1.1.5.tar.xz
+          cd cmocka-1.1.5
+          mkdir build
+          mkdir install
+          cd ./build
+          cmake -DCMAKE_INSTALL_PREFIX=$PWD/../install -DCMAKE_BUILD_TYPE=Debug ..
+          make
+          make install
+      - name: run tuto1
+        run: |
+          cd ./tuto1
+          make
       - run: echo "🍏 This job's status is ${{ job.status }}."
