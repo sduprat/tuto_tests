@@ -5,21 +5,23 @@ tuto and ex for unit test
 
 ### Having CMOCKA installed
 see install procédure on https://github.com/clibs/cmocka/blob/master/INSTALL.md  
-But also, you can adapt the folowing command, please, replace `<INSTALL_DIR>`  with the dir where you have installed cmocka.
+But also, you can adapt the folowing command, please, replace `<INSTALL_DIR>`  with the dir where you have installed cmocka.  
+Depending the system, you may use `install/lib64` instead of `install/lib`
 ```shell
 wget https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz
 tar xf cmocka-1.1.5.tar.xz
-cd build/
 cd cmocka-1.1.5
-pwd
-cmake -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>/build -DCMAKE_BUILD_TYPE=Debug ..
+mkdir build
+mkdir install
+cd ./build
+cmake -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>/install -DCMAKE_BUILD_TYPE=Debug ..
 make
 make install
 ```
 ## Set up env 
 just need to update LD_LIBRARY_PATH:
 ```shell
-export LD_LIBRARY_PATH=<INSTALL_DIR>/install/lib64
+export LD_LIBRARY_PATH=<INSTALL_DIR>/install/lib
 ```
 
 ## Other links
