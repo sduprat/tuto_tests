@@ -30,7 +30,14 @@ export LD_LIBRARY_PATH=<INSTALL_DIR>/install/lib
 
 
 
-## Run the example
+## Example
+
+subdir `tuto1` is a simple example implementing basic tests with cmocka.  
+- `./src/file1.c` is the source file to test
+- `./src/test_file1.c` is script file (in C language, using cmocka primitives) to test functions defined in `file1.c`.
+
+Run the example
+Being placed in `tuto1` subdir
 ```shell
 > make
 gcc -c -Iinc -I../../cmocka-1.1.5/install/include -L../../cmocka-1.1.5/install/lib64 -lcmocka src/test_file1.c -o src/test_file1.o
@@ -49,6 +56,8 @@ gcc src/test_file1.o src/file1.o -o test1 -L../../cmocka-1.1.5/install/lib64 -lc
 ```
 
 ## what is happening ?
+* check usage of the assert of `assert_int_equal()` to verify results of called functions.
+* check usage of the mock of `fa` and usage of [`will_return()`](https://api.cmocka.org/group__cmocka__mock.html#ga64d184d2b658f0a29a9b937e8f1ffb90) and [`mock()`](https://api.cmocka.org/group__cmocka__mock.html#ga3cae77b8be3666adc80b294aeb21cc06) primitives to control behavior of the `fa` mocked function.
 
 ### testing f1
 `f1` function is tested by `test_f1__1()` test function very simply with `assert_int_equal` cmocka primitive.
